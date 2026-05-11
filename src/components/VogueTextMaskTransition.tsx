@@ -38,12 +38,12 @@ export function VogueTextMaskTransition({ children }: { children: ReactNode }) {
               opacity: 1,
               scale: 1,
               transition: {
-                scale: { duration: 0.8, ease: cinematicEase },
-                opacity: { duration: 0.3, ease: "linear" },
+                scale: { duration: 0.4, ease: cinematicEase },
+                opacity: { duration: 0.8, ease: "linear" },
               },
             }}
             // PRO TIP: Adjust the transform origin to ensure the camera zooms through the hole in the 'O' or 'G', rather than crashing into the solid letter 'V'.
-            style={{ transformOrigin: "50% 50%" }}
+            style={{ transformOrigin: "47% 53%" }}
           >
           {/* The massively oversized SVG. 
             By making the rect 11000px wide, we guarantee the edges never clip, 
