@@ -239,7 +239,7 @@ export default function AboutPage() {
             <div className="team-member text-center">
               <div className="relative mb-6">
                 <Image
-                  src="/weddingImages/rhamely-8eDuPKLpFQE.jpg"
+                  src="/teammember/img1.jpeg"
                   alt="Sarah Johnson"
                   width={192}
                   height={192}
@@ -248,17 +248,17 @@ export default function AboutPage() {
                 />
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#D4B483]/20 rounded-full blur-xl"></div>
               </div>
-              <h3 className="text-2xl font-bold mb-2">SARAH JOHNSON</h3>
+              <h3 className="text-2xl font-bold mb-2">Vishal</h3>
               <p className="text-[#D4B483] font-semibold mb-4">Lead Event Designer</p>
               <p className="text-white/70 leading-relaxed">
-                With over 10 years of experience, Sarah brings creativity and elegance to every celebration.
+                With over 10 years of experience, Vishal brings creativity and elegance to every celebration.
               </p>
             </div>
 
             <div className="team-member text-center">
               <div className="relative mb-6">
                 <Image
-                  src="/weddingImages/engin-akyurt-3IN8pjVpDw0-unsplash.jpg"
+                  src="/teammember/img2.jpeg"
                   alt="Michael Chen"
                   width={192}
                   height={192}
@@ -267,17 +267,17 @@ export default function AboutPage() {
                 />
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#D4B483]/20 rounded-full blur-xl"></div>
               </div>
-              <h3 className="text-2xl font-bold mb-2">MICHAEL CHEN</h3>
+              <h3 className="text-2xl font-bold mb-2">Rohit</h3>
               <p className="text-[#D4B483] font-semibold mb-4">Wedding Coordinator</p>
               <p className="text-white/70 leading-relaxed">
-                Michael ensures every detail is perfect, from ceremony to reception, with meticulous planning.
+                Rohit ensures every detail is perfect, from ceremony to reception, with meticulous planning.
               </p>
             </div>
 
             <div className="team-member text-center">
               <div className="relative mb-6">
                 <Image
-                  src="/events/img3.jpg"
+                  src="/teammember/img3.jpeg"
                   alt="Emma Rodriguez"
                   width={192}
                   height={192}
@@ -286,7 +286,7 @@ export default function AboutPage() {
                 />
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-[#D4B483]/20 rounded-full blur-xl"></div>
               </div>
-              <h3 className="text-2xl font-bold mb-2">EMMA RODRIGUEZ</h3>
+              <h3 className="text-2xl font-bold mb-2">EMMA</h3>
               <p className="text-[#D4B483] font-semibold mb-4">Floral & Decor Specialist</p>
               <p className="text-white/70 leading-relaxed">
                 Emma creates stunning floral arrangements and decor that transform venues into magical spaces.
