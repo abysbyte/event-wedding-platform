@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Lora } from "next/font/google";
 import "./globals.css";
+import { VogueTextMaskTransition } from "@/components/VogueTextMaskTransition";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -27,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${lora.variable} antialiased font-[family-name:var(--font-lora)]`}
       >
-        {children}
+        <VogueTextMaskTransition>{children}</VogueTextMaskTransition>
       </body>
     </html>
   );
