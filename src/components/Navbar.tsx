@@ -40,7 +40,7 @@ export function Navbar() {
             className={`text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-wider ${isScrolled ? "text-primary" : "text-white"
               }`}
           >
-            Vogue Events & Entertainment
+            Vogue Events
           </motion.div>
         </Link>
 
