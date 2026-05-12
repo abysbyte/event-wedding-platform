@@ -71,7 +71,7 @@ export default function HomePage() {
   const xPercent1 = useRef(0);
   const xPercent2 = useRef(0);
   const direction = useRef(-1);
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | undefined>(undefined);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
