@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -20,6 +20,12 @@ export default function ServicesPage() {
   const servicesContentRef = useRef<HTMLDivElement>(null);
   const testimonialSectionRef = useRef<HTMLDivElement>(null);
   const testimonialCardsRef = useRef<HTMLDivElement>(null);
+
+  // Always open from the top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    ScrollTrigger.refresh();
+  }, []);
 
   useGSAP(() => {
     if (!containerRef.current || !heroTextRef.current || !heroImageRef.current || !maskRef.current || !servicesContentRef.current) return;
