@@ -109,7 +109,7 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     id: 1,
-    clientName: "Sarah & James",
+    clientName: "Rahul & Tanya",
     eventType: "Wedding",
     rating: 5,
     feedback: "Absolutely magical! They transformed our vision into reality. Every detail was perfect, and we couldn't have asked for a better team.",
@@ -118,7 +118,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    clientName: "Emily & Michael",
+    clientName: "Amit & Priya",
     eventType: "Wedding",
     rating: 5,
     feedback: "Professional, creative, and incredibly attentive. They handled everything seamlessly while we enjoyed our special day.",
@@ -127,7 +127,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 3,
-    clientName: "The Johnson Family",
+    clientName: "The Sharma Family",
     eventType: "Event",
     rating: 4.5,
     feedback: "Outstanding event coordination! The decorations were stunning, and the flow of the evening was impeccable.",
@@ -136,7 +136,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 4,
-    clientName: "Lisa & David",
+    clientName: "Lisa & Rohit",
     eventType: "Wedding",
     rating: 5,
     feedback: "They truly understood our aesthetic and executed it flawlessly. Our wedding was the most beautiful day of our lives!",
@@ -145,7 +145,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 5,
-    clientName: "Amanda & Chris",
+    clientName: "Vishal & Shaina",
     eventType: "Party",
     rating: 4.5,
     feedback: "Amazing work on our anniversary celebration. The ambiance was perfect, and all our guests were impressed.",
@@ -154,7 +154,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 6,
-    clientName: "Rachel & Tom",
+    clientName: "Riya & Alok",
     eventType: "Wedding",
     rating: 5,
     feedback: "From consultation to the last dance, they were exceptional. Highly recommend for anyone planning their dream wedding!",
