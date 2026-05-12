@@ -2,13 +2,74 @@
 
 import { AnimatePresence, motion, cubicBezier } from "framer-motion";
 import { usePathname } from "next/navigation";
-import type { ReactNode } from "react";
+import { type ReactNode, useState, useEffect } from "react";
 
 const overlayColor = "#0C0C0C";
 const cinematicEase = cubicBezier(0.55, 0, 1, 0.45);
 
+/**
+ * Responsive breakpoints for the text mask animation.
+ * On smaller screens the text is scaled down so it stays fully visible
+ * inside the SVG viewBox, and the zoom scale is increased to compensate
+ * for the smaller mask opening.
+ */
+function useTextMaskConfig() {
+  const [config, setConfig] = useState({
+    fontSize: 220,
+    letterSpacing: -12,
+    scale: 150,
+    transformOrigin: "47% 53%",
+  });
+
+  useEffect(() => {
+    function update() {
+      const w = window.innerWidth;
+      if (w < 480) {
+        // Extra-small phones
+        setConfig({
+          fontSize: 100,
+          letterSpacing: -4,
+          scale: 250,
+          transformOrigin: "48% 52%",
+        });
+      } else if (w < 768) {
+        // Phones / small tablets
+        setConfig({
+          fontSize: 140,
+          letterSpacing: -6,
+          scale: 200,
+          transformOrigin: "48% 52%",
+        });
+      } else if (w < 1024) {
+        // Tablets
+        setConfig({
+          fontSize: 180,
+          letterSpacing: -9,
+          scale: 170,
+          transformOrigin: "47% 53%",
+        });
+      } else {
+        // Desktop
+        setConfig({
+          fontSize: 220,
+          letterSpacing: -12,
+          scale: 150,
+          transformOrigin: "47% 53%",
+        });
+      }
+    }
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  return config;
+}
+
 export function VogueTextMaskTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const { fontSize, letterSpacing, scale, transformOrigin } = useTextMaskConfig();
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-white">
@@ -27,7 +88,7 @@ export function VogueTextMaskTransition({ children }: { children: ReactNode }) {
             initial={{ opacity: 1, scale: 1 }}
             animate={{
               opacity: 0,
-              scale: 150, // Massive scale to completely swallow the screen
+              scale, // Responsive scale — larger on small screens to compensate for smaller text
               transition: {
                 scale: { duration: 1.5, ease: cinematicEase },
                 opacity: { duration: 0.3, delay: 1.1, ease: "linear" }, // Fade out at the very end
@@ -43,7 +104,7 @@ export function VogueTextMaskTransition({ children }: { children: ReactNode }) {
               },
             }}
             // PRO TIP: Adjust the transform origin to ensure the camera zooms through the hole in the 'O' or 'G', rather than crashing into the solid letter 'V'.
-            style={{ transformOrigin: "47% 53%" }}
+            style={{ transformOrigin }}
           >
           {/* The massively oversized SVG. 
             By making the rect 11000px wide, we guarantee the edges never clip, 
@@ -67,8 +128,8 @@ export function VogueTextMaskTransition({ children }: { children: ReactNode }) {
                   textAnchor="middle"
                   fontFamily="'Playfair Display', 'Times New Roman', serif"
                   fontWeight="900"
-                  fontSize="220"
-                  letterSpacing="-12"
+                  fontSize={fontSize}
+                  letterSpacing={letterSpacing}
                   fill="black"
                 >
                   VOGUE
