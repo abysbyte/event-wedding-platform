@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Calendar, MapPin, Shirt, Play, ChevronRight } from "lucide-react";
@@ -56,6 +56,81 @@ export default function HomePage() {
   const [hoveredMoment, setHoveredMoment] = useState<number | null>(null);
   const testimonialSectionRef = useRef<HTMLDivElement>(null);
   const testimonialCardsRef = useRef<HTMLDivElement>(null);
+
+  // Text scroller refs for Track 1 (Moves Left)
+  const firstText1 = useRef<HTMLParagraphElement>(null);
+  const secondText1 = useRef<HTMLParagraphElement>(null);
+  const slider1 = useRef<HTMLDivElement>(null);
+
+  // Text scroller refs for Track 2 (Moves Right)
+  const firstText2 = useRef<HTMLParagraphElement>(null);
+  const secondText2 = useRef<HTMLParagraphElement>(null);
+  const slider2 = useRef<HTMLDivElement>(null);
+
+  // Use refs for animation variables so they don't reset when component re-renders
+  const xPercent1 = useRef(0);
+  const xPercent2 = useRef(0);
+  const direction = useRef(-1);
+  const requestRef = useRef<number>();
+
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Scrub animation for Track 1
+    gsap.to(slider1.current, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        scrub: 0.25,
+        start: 0,
+        end: window.innerHeight,
+        onUpdate: (e) => (direction.current = e.direction * -1)
+      },
+      x: "-250px"
+    });
+
+    // Scrub animation for Track 2 (Opposite direction)
+    gsap.to(slider2.current, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        scrub: 0.25,
+        start: 0,
+        end: window.innerHeight,
+      },
+      x: "250px"
+    });
+
+    requestRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    };
+  }, []);
+
+  const animate = () => {
+    // Reset loops for seamless infinite scrolling
+    if (xPercent1.current < -100) xPercent1.current = 0;
+    else if (xPercent1.current > 0) xPercent1.current = -100;
+
+    if (xPercent2.current < -100) xPercent2.current = 0;
+    else if (xPercent2.current > 0) xPercent2.current = -100;
+
+    // Apply GSAP updates
+    if (firstText1.current && secondText1.current) {
+      gsap.set(firstText1.current, { xPercent: xPercent1.current });
+      gsap.set(secondText1.current, { xPercent: xPercent1.current });
+    }
+
+    if (firstText2.current && secondText2.current) {
+      gsap.set(firstText2.current, { xPercent: xPercent2.current });
+      gsap.set(secondText2.current, { xPercent: xPercent2.current });
+    }
+
+    // Increment percentages inversely so they move in opposite directions
+    xPercent1.current += 0.08 * direction.current;
+    xPercent2.current -= 0.08 * direction.current;
+
+    requestRef.current = requestAnimationFrame(animate);
+  };
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -237,6 +312,45 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Vogue text sliderContainer */}
+      <section className="py-20 overflow-hidden bg-[#050505]">
+        <div className="relative flex flex-col gap-6">
+
+          {/* Track 1: Moves Left (Changed to flex, removed absolute positioning) */}
+          <div ref={slider1} className="relative flex whitespace-nowrap">
+            <p
+              ref={firstText1}
+              className="m-0 pr-[50px] text-[150px] md:text-[230px] font-medium text-white uppercase leading-none"
+            >
+              Vogue Events & Management —
+            </p>
+            <p
+              ref={secondText1}
+              className="m-0 pr-[50px] text-[150px] md:text-[230px] font-medium text-white uppercase leading-none"
+            >
+              Vogue Events & Management —
+            </p>
+          </div>
+
+          {/* Track 2: Moves Right (Changed to flex, removed absolute positioning) */}
+          <div ref={slider2} className="relative flex whitespace-nowrap">
+            <p
+              ref={firstText2}
+              className="m-0 pr-[50px] text-[150px] md:text-[230px] font-medium text-transparent opacity-80 [-webkit-text-stroke:2px_white] uppercase leading-none"
+            >
+              Vogue Events & Management —
+            </p>
+            <p
+              ref={secondText2}
+              className="m-0 pr-[50px] text-[150px] md:text-[230px] font-medium text-transparent opacity-80 [-webkit-text-stroke:2px_white] uppercase leading-none"
+            >
+              Vogue Events & Management —
+            </p>
+          </div>
+
+        </div>
+      </section>
+
       <section id="gallery" className="bg-[#090909] py-24">
         <div className="mx-auto max-w-7xl px-6 text-center">
           <p className="text-sm uppercase tracking-[0.45em] text-white/50">Featured Moments</p>
@@ -267,8 +381,8 @@ export default function HomePage() {
                       fill
                       unoptimized
                       className={`object-cover transition duration-700 ${hoveredMoment === index
-                          ? "brightness-110 grayscale-0"
-                          : "brightness-60 grayscale"
+                        ? "brightness-110 grayscale-0"
+                        : "brightness-60 grayscale"
                         }`}
                     />
                   </div>
@@ -352,13 +466,12 @@ export default function HomePage() {
                       {[...Array(5)].map((_, i) => (
                         <svg
                           key={i}
-                          className={`w-4 h-4 ${
-                            i < Math.floor(testimonial.rating)
-                              ? "text-yellow-400"
-                              : i < testimonial.rating
+                          className={`w-4 h-4 ${i < Math.floor(testimonial.rating)
+                            ? "text-yellow-400"
+                            : i < testimonial.rating
                               ? "text-yellow-400"
                               : "text-gray-500"
-                          }`}
+                            }`}
                           fill={i < Math.floor(testimonial.rating) ? "currentColor" : "none"}
                           stroke="currentColor"
                           viewBox="0 0 24 24"

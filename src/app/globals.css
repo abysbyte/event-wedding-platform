@@ -4,25 +4,33 @@
 
 @layer base {
   :root {
-    --background: 253 250 246; /* #fdfaf6 */
-    --foreground: 45 55 72; /* #2d3748 */
-    
-    --primary: 201 164 126; /* #c9a47e */
+    --background: 253 250 246;
+    /* #fdfaf6 */
+    --foreground: 45 55 72;
+    /* #2d3748 */
+
+    --primary: 201 164 126;
+    /* #c9a47e */
     --primary-foreground: 255 255 255;
-    
-    --secondary: 230 218 204; /* #e6dacc */
+
+    --secondary: 230 218 204;
+    /* #e6dacc */
     --secondary-foreground: 45 55 72;
 
-    --accent: 176 141 106; /* #b08d6a */
+    --accent: 176 141 106;
+    /* #b08d6a */
     --accent-foreground: 255 255 255;
 
-    --muted: 244 240 235; /* #f4f0eb */
-    --muted-foreground: 113 128 150; /* #718096 */
+    --muted: 244 240 235;
+    /* #f4f0eb */
+    --muted-foreground: 113 128 150;
+    /* #718096 */
 
     --card: 255 255 255;
     --card-foreground: 45 55 72;
 
-    --border: 226 232 240; /* #e2e8f0 */
+    --border: 226 232 240;
+    /* #e2e8f0 */
     --input: 226 232 240;
     --ring: 201 164 126;
 
@@ -30,25 +38,31 @@
   }
 
   .dark {
-    --background: 26 32 44; /* #1a202c */
-    --foreground: 247 250 252; /* #f7fafc */
+    --background: 26 32 44;
+    /* #1a202c */
+    --foreground: 247 250 252;
+    /* #f7fafc */
 
-    --primary: 212 175 55; /* #d4af37 */
+    --primary: 212 175 55;
+    /* #d4af37 */
     --primary-foreground: 26 32 44;
 
     --secondary: 45 55 72;
     --secondary-foreground: 247 250 252;
 
-    --accent: 246 224 94; /* #f6e05e */
+    --accent: 246 224 94;
+    /* #f6e05e */
     --accent-foreground: 26 32 44;
 
     --muted: 45 55 72;
-    --muted-foreground: 160 174 192; /* #a0aec0 */
+    --muted-foreground: 160 174 192;
+    /* #a0aec0 */
 
     --card: 45 55 72;
     --card-foreground: 247 250 252;
 
-    --border: 74 85 104; /* #4a5568 */
+    --border: 74 85 104;
+    /* #4a5568 */
     --input: 74 85 104;
     --ring: 212 175 55;
   }
@@ -58,6 +72,7 @@
   * {
     @apply border-[rgb(var(--border))] outline-[rgb(var(--ring))]/50;
   }
+
   body {
     @apply bg-[rgb(var(--background))] text-[rgb(var(--foreground))];
   }
