@@ -135,6 +135,9 @@ export function PageLoader() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 0.5, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
+              style={{
+                textAlign: "center",
+              }}
             >
               Creating Unforgettable Moments
             </motion.p>
