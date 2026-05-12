@@ -15,7 +15,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Elegance Events | Wedding & Events",
+  title: "Vogue Events & Management",
   description: "Creating unforgettable moments for your special day.",
 };
 
