@@ -3,6 +3,7 @@ import { Playfair_Display, Lora } from "next/font/google";
 import "./globals.css";
 import { VogueTextMaskTransition } from "@/components/VogueTextMaskTransition";
 import { PageLoader } from "@/components/PageLoader";
+import { SmoothScrolling } from "@/components/SmoothScrolling";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -29,8 +30,10 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${lora.variable} antialiased font-[family-name:var(--font-lora)]`}
       >
-        <PageLoader />
-        <VogueTextMaskTransition>{children}</VogueTextMaskTransition>
+        <SmoothScrolling>
+          <PageLoader />
+          <VogueTextMaskTransition>{children}</VogueTextMaskTransition>
+        </SmoothScrolling>
       </body>
     </html>
   );
