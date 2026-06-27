@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Wedding & Events Platform
 
-## Getting Started
+A polished, interactive wedding and events website built with Next.js. This project showcases a responsive design, smooth navigation, and elegant content sections for couples, event planners, and venue partners.
 
-First, run the development server:
+## live preview - https://vogue-project.vercel.app
+
+## What this project includes
+
+- **Responsive landing experience** with full-screen hero, animated content, and scroll-based navigation
+- **About, Services, Gallery, and Contact** pages organized with modern layout patterns
+- **Custom UI components** for branding, navigation, image galleries, and transitions
+- **Smooth interactive experience** for desktop and mobile visitors
+- **Next.js App Router** with optimized routing and server-side rendering ready for deployment
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key pages and features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/page.tsx` — homepage experience and hero section
+- `src/app/about/page.tsx` — brand story, mission, and team section
+- `src/app/services/page.tsx` — curated event planning services and offerings
+- `src/app/gallery/page.tsx` — image-rich portfolio of weddings and events
+- `src/app/contact/page.tsx` — contact form and venue inquiry section
+- `src/components/Navbar.tsx` — sticky navigation with smooth scrolling support
+- `src/components/PageLoader.tsx` — polished page transitions and load states
+- `src/components/SmoothScrolling.tsx` — reusable smooth scroll utility
 
-## Learn More
+## Design and interaction highlights
 
-To learn more about Next.js, take a look at the following resources:
+- Smooth section navigation and scroll anchoring
+- Elegant service cards and event showcases
+- Responsive image gallery for weddings, venues, and celebrations
+- Clean typography and consistent spacing for high-end event brands
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Build for production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+npm start
+```
 
-## Deploy on Vercel
+## Customize your platform
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Replace static content in `src/lib/weddingData.ts` with your own event packages and photo collections
+- Update layout styling in `src/app/globals.css` and `tailwind.config.js`
+- Add new service categories or event types in `src/app/services/page.tsx`
+- Extend the gallery with new event imagery in `public/weddingImages` and `public/serviceImages`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Open a pull request with a clear description
+
+## Deployment
+
+This site is ready for deployment on Vercel, Netlify, or any platform that supports Next.js.
+
+> For a live preview, run the development server locally and explore the interactive wedding experience at `http://localhost:3000`.
+
+---
+
+### Project structure
+
+- `src/app/` — application routes and page components
+- `src/components/` — shared UI building blocks
+- `src/lib/` — content data and utilities
+- `public/` — static assets for galleries and service imagery
+
+## License
+
+This project is open for customization and use under your preferred license.
